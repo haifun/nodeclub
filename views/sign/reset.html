@@ -1,4 +1,4 @@
-<%- partial('sign/sidebar') %>
+<%- partial('../sign/sidebar') %>
 
 <div id='content'>
 	<div class='panel'>
@@ -9,9 +9,7 @@
 			</ul>
 		</div>
 		<div class='inner'>
-			<div class='sep10'></div>
-			<div class='sep10'></div>
-			<% if(locals.error){ %>
+			<% if(typeof(error) !== 'undefined' && error){ %>
 			<div class="alert alert-error">	
 				<a class="close" data-dismiss="alert" href="#">&times;</a>
 				<strong><%= error %></strong>
@@ -38,5 +36,5 @@
 				</div>
 			</form>
 		</div>
-	</div>	
+	</div>
 </div>

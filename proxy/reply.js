@@ -3,7 +3,6 @@ var Reply = models.Reply;
 var EventProxy = require('eventproxy');
 
 var Util = require('../libs/util');
-var Showdown = require('../public/libs/showdown');
 var User = require('./user');
 var at = require('../services/at');
 
@@ -48,7 +47,7 @@ exports.getReplyById = function (id, callback) {
         if (err) {
           return callback(err);
         }
-        reply.content = Util.xss(Showdown.parse(str));
+        reply.content = str;
         return callback(err, reply);
       });
     });
@@ -69,7 +68,7 @@ exports.getRepliesByTopicId = function (id, cb) {
       return cb(err);
     }
     if (replies.length === 0) {
-      return cb(err, []);
+      return cb(null, []);
     }
 
     var proxy = new EventProxy();
@@ -111,7 +110,7 @@ exports.getRepliesByTopicId = function (id, cb) {
             if (err) {
               return cb(err);
             }
-            replies[i].content = Util.xss(Showdown.parse(str));
+            replies[i].content = str;
             proxy.emit('reply_find');
           });
         });
@@ -145,6 +144,10 @@ exports.newAndSave = function (content, topicId, authorId, replyId, callback) {
   });
 };
 
-exports.getRepliesByAuthorId = function (authorId, callback) {
-  Reply.find({author_id: authorId}, callback);
+exports.getRepliesByAuthorId = function (authorId, opt, callback) {
+  if (!callback) {
+    callback = opt;
+    opt = null;
+  }
+  Reply.find({author_id: authorId}, {}, opt, callback);
 };

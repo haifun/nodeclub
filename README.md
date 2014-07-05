@@ -1,6 +1,6 @@
 # nodeclub [![Build Status](https://secure.travis-ci.org/cnodejs/nodeclub.png?branch=master)](http://travis-ci.org/cnodejs/nodeclub) [![依赖模块状态](https://david-dm.org/cnodejs/nodeclub.png)](http://david-dm.org/cnodejs/nodeclub)
 
-基于nodejs的社区系统
+基于nodejs的社区系统。可访问 http://cnodejs.org/ 查看。
 
 ## 介绍
 
@@ -30,72 +30,31 @@ jscoverage
 $ make test-cov
 ```
 
-* jscoverage: [**31%**](http://fengmk2.github.com/coverage/nodeclub.html)
-    
-## 其它
-
-小量修改了两个依赖模块：node-markdown，express
- 
-* node-markdown/lib/markdown.js  
-
-allowedTags 添加：
-
-```
-embed  //支持 flash 视频
-table|thead|tbody|tr|td|th|caption  //支持表格
-```
-   
-allowedAttributes 添加：
-
-```
-embed:'src|quality|width|height|align|allowScriptAccess|allowFullScreen|mode|type'
-table: 'class'
-```
-
-* express/node_modules/connect/lib/middleware/csrf.js 添加：
-
-```javascript
-if (req.body && req.body.user_action === 'upload_image') return next();
-```
-
 ## 关于pull request
 
-从现在开始，所有提交都要严格遵循[代码规范](https://github.com/windyrobin/iFrame/blob/master/style.md)。
+从现在开始，所有提交都要严格遵循[代码规范](https://github.com/dead-horse/node-style-guide)。
 
 ## Contributors
 
-Below is the output from `git-summary`.
+Below is the output from `git-summary`. Only first ten.
 
-```
- $ git summary 
+```bash
+$ git summary
 
- project  : nodeclub
- repo age : 1 year, 1 month
- active   : 113 days
- commits  : 270
- files    : 280
- authors  : 
-   129  fengmk2                 47.8%
-    31  Jackson Tian            11.5%
-    30  dead-horse              11.1%
-    16  jiyinyiyong             5.9%
-    10  Kenny Zhao              3.7%
-     9  Lei Zongmin             3.3%
-     9  muyuan                  3.3%
-     7  young40                 2.6%
-     6  aisk                    2.2%
-     5  ericzhang               1.9%
-     4  spout                   1.5%
-     3  Json Shen               1.1%
-     2  Cong Ding               0.7%
-     2  chang                   0.7%
-     1  sunwenchao              0.4%
-     1  roymax                  0.4%
-     1  Xiang Gao               0.4%
-     1  leizongmin              0.4%
-     1  thebrecht               0.4%
-     1  LeToNode                0.4%
-     1  张洋                  0.4%
+project  : nodeclub
+repo age : 2 years, 3 months
+active   : 244 days
+commits  : 632
+files    : 224
+authors  :
+ 203  fengmk2                 32.1%
+ 111  Alsotang                17.6%
+  98  jiyinyiyong             15.5%
+  49  Jackson Tian            7.8%
+  30  dead-horse              4.7%
+  24  alsotang                3.8%
+  10  Kenny Zhao              1.6%
+  10  Lei Zongmin             1.6%
 ```
 
 ## License
